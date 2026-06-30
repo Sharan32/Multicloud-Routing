@@ -1,0 +1,66 @@
+[
+  {
+    "timestamp": "2026-06-30T08:58:43.536785",
+    "old_route": null,
+    "new_route": "aws-node",
+    "reason": "latency=80.0ms packet_loss=0.0% throughput=100.0mbps health=1.0",
+    "old_score": null,
+    "new_score": 84.0
+  },
+  {
+    "timestamp": "2026-06-30T08:58:51.187111",
+    "old_route": null,
+    "new_route": "aws-node",
+    "reason": "latency=80.0ms packet_loss=0.0% throughput=100.0mbps health=1.0",
+    "old_score": null,
+    "new_score": 84.0
+  },
+  {
+    "timestamp": "2026-06-30T10:11:22.240073",
+    "old_route": null,
+    "new_route": "aws-node",
+    "reason": "latency=80.0ms packet_loss=0.0% throughput=100.0mbps health=1.0",
+    "old_score": null,
+    "new_score": 84.0
+  },
+  {
+    "timestamp": "2026-06-30T10:11:22.267830",
+    "old_route": null,
+    "new_route": "aws-node",
+    "reason": "latency=80.0ms packet_loss=0.0% throughput=100.0mbps health=1.0",
+    "old_score": null,
+    "new_score": 84.0
+  },
+  {
+    "timestamp": "2026-06-30T10:11:35.126425",
+    "old_route": null,
+    "new_route": "aws-node",
+    "reason": "latency=80.0ms packet_loss=0.0% throughput=100.0mbps health=1.0",
+    "old_score": null,
+    "new_score": 84.0
+  },
+  {
+    "timestamp": "2026-06-30T10:11:35.159998",
+    "old_route": null,
+    "new_route": "aws-node",
+    "reason": "latency=80.0ms packet_loss=0.0% throughput=100.0mbps health=1.0",
+    "old_score": null,
+    "new_score": 84.0
+  },
+  {
+    "timestamp": "2026-06-30T10:11:43.588823",
+    "old_route": null,
+    "new_route": "aws-node",
+    "reason": "latency=80.0ms packet_loss=0.0% throughput=100.0mbps health=1.0",
+    "old_score": null,
+    "new_score": 84.0
+  },
+  {
+    "timestamp": "2026-06-30T10:11:43.614950",
+    "old_route": null,
+    "new_route": "aws-node",
+    "reason": "latency=80.0ms packet_loss=0.0% throughput=100.0mbps health=1.0",
+    "old_score": null,
+    "new_score": 84.0
+  }
+]

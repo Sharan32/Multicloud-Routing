@@ -1,0 +1,1268 @@
+2026-06-30 12:55:16,032 INFO api.main Incoming request GET /health
+2026-06-30 12:55:16,034 INFO api.health Health check requested
+2026-06-30 12:55:16,035 INFO api.main Completed request GET /health
+2026-06-30 12:55:16,040 INFO api.main Incoming request GET /metrics
+2026-06-30 12:55:16,043 INFO api.metrics Metrics endpoint requested
+2026-06-30 12:55:16,044 WARNING api.metrics No metrics available
+2026-06-30 12:55:16,044 INFO api.main Completed request GET /metrics
+2026-06-30 12:55:16,048 INFO api.main Incoming request POST /nodes
+2026-06-30 12:55:16,056 INFO api.nodes Node creation requested for aws-node
+2026-06-30 12:55:16,057 INFO api.main Completed request POST /nodes
+2026-06-30 12:55:16,058 INFO api.main Incoming request GET /nodes
+2026-06-30 12:55:16,060 INFO api.nodes Node listing requested
+2026-06-30 12:55:16,060 INFO api.main Completed request GET /nodes
+2026-06-30 12:55:16,064 INFO api.main Incoming request POST /nodes
+2026-06-30 12:55:16,070 INFO api.main Completed request POST /nodes
+2026-06-30 14:14:50,979 INFO api.main Incoming request method=GET path=/health
+2026-06-30 14:14:50,985 INFO api.health Health check requested
+2026-06-30 14:14:50,986 INFO api.main Completed request method=GET path=/health status=200 duration_ms=6.86
+2026-06-30 14:14:50,999 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 14:14:51,008 INFO api.metrics Metrics endpoint requested
+2026-06-30 14:14:51,008 INFO api.metrics Metrics retrieval completed count=1
+2026-06-30 14:14:51,009 ERROR api.main Failed request method=GET path=/metrics duration_ms=10.56 error=2 validation errors for MetricsResponse
+timestamp
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+status
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 66, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/metrics.py", line 21, in read_metrics
+    return [MetricsResponse(**item) for item in metrics]
+            ~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for MetricsResponse
+timestamp
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+status
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-06-30 14:14:51,021 ERROR api.main Unhandled exception for GET /metrics
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 66, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/metrics.py", line 21, in read_metrics
+    return [MetricsResponse(**item) for item in metrics]
+            ~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for MetricsResponse
+timestamp
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+status
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-06-30 14:14:52,234 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 14:14:52,246 INFO api.nodes Node creation requested for aws-node
+2026-06-30 14:14:52,247 INFO api.nodes Node registration completed name=aws-node
+2026-06-30 14:14:52,248 INFO api.main Completed request method=POST path=/nodes status=201 duration_ms=14.08
+2026-06-30 14:14:52,252 INFO api.main Incoming request method=GET path=/nodes
+2026-06-30 14:14:52,254 INFO api.nodes Node listing requested
+2026-06-30 14:14:52,255 INFO api.main Completed request method=GET path=/nodes status=200 duration_ms=3.53
+2026-06-30 14:14:52,263 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 14:14:52,276 ERROR api.main Failed request method=POST path=/nodes duration_ms=12.36 error=Object of type ValueError is not JSON serializable
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 739, in app
+    raise validation_error
+fastapi.exceptions.RequestValidationError: 1 validation error:
+  {'type': 'value_error', 'loc': ('body', 'name'), 'msg': 'Value error, node names may only contain letters, numbers, hyphens, or underscores', 'input': 'bad name', 'ctx': {'error': ValueError('node names may only contain letters, numbers, hyphens, or underscores')}}
+
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/nodes.py", line 22, in create_node
+    POST /nodes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 66, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 59, in wrapped_app
+    response = await handler(conn, exc)  # type: ignore[arg-type]
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 54, in validation_error_handler
+    return JSONResponse(status_code=422, content={"error": "Validation failed", "status": 422, "details": exc.errors()})
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 192, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 45, in __init__
+    self.body = self.render(content)
+                ~~~~~~~~~~~^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 195, in render
+    return json.dumps(
+           ~~~~~~~~~~^
+        content,
+        ^^^^^^^^
+    ...<3 lines>...
+        separators=(",", ":"),
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ).encode("utf-8")
+    ^
+  File "/usr/lib64/python3.14/json/__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/usr/lib64/python3.14/json/encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.14/json/encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.14/json/encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type ValueError is not JSON serializable
+when serializing dict item 'error'
+when serializing dict item 'ctx'
+when serializing list item 0
+when serializing dict item 'details'
+2026-06-30 14:14:52,283 ERROR api.main Unhandled exception for POST /nodes
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 739, in app
+    raise validation_error
+fastapi.exceptions.RequestValidationError: 1 validation error:
+  {'type': 'value_error', 'loc': ('body', 'name'), 'msg': 'Value error, node names may only contain letters, numbers, hyphens, or underscores', 'input': 'bad name', 'ctx': {'error': ValueError('node names may only contain letters, numbers, hyphens, or underscores')}}
+
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/nodes.py", line 22, in create_node
+    POST /nodes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 66, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 59, in wrapped_app
+    response = await handler(conn, exc)  # type: ignore[arg-type]
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 54, in validation_error_handler
+    return JSONResponse(status_code=422, content={"error": "Validation failed", "status": 422, "details": exc.errors()})
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 192, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 45, in __init__
+    self.body = self.render(content)
+                ~~~~~~~~~~~^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 195, in render
+    return json.dumps(
+           ~~~~~~~~~~^
+        content,
+        ^^^^^^^^
+    ...<3 lines>...
+        separators=(",", ":"),
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ).encode("utf-8")
+    ^
+  File "/usr/lib64/python3.14/json/__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/usr/lib64/python3.14/json/encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.14/json/encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.14/json/encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type ValueError is not JSON serializable
+when serializing dict item 'error'
+when serializing dict item 'ctx'
+when serializing list item 0
+when serializing dict item 'details'
+2026-06-30 14:14:53,325 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 14:14:53,330 INFO api.metrics Metrics endpoint requested
+2026-06-30 14:14:53,331 INFO api.metrics Metrics retrieval completed count=1
+2026-06-30 14:14:53,331 ERROR api.main Failed request method=GET path=/metrics duration_ms=6.54 error=2 validation errors for MetricsResponse
+timestamp
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+status
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 66, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/metrics.py", line 21, in read_metrics
+    return [MetricsResponse(**item) for item in metrics]
+            ~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for MetricsResponse
+timestamp
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+status
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-06-30 14:14:53,337 ERROR api.main Unhandled exception for GET /metrics
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 66, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/metrics.py", line 21, in read_metrics
+    return [MetricsResponse(**item) for item in metrics]
+            ~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for MetricsResponse
+timestamp
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+status
+  Field required [type=missing, input_value={'node': 'aws-node', 'hos...'10.0.0.10', 'port': 22}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-06-30 14:15:34,301 INFO api.main Incoming request method=GET path=/health
+2026-06-30 14:15:34,307 INFO api.health Health check requested
+2026-06-30 14:15:34,308 INFO api.main Completed request method=GET path=/health status=200 duration_ms=7.04
+2026-06-30 14:15:34,322 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 14:15:34,333 INFO api.metrics Metrics endpoint requested
+2026-06-30 14:15:34,333 INFO api.main Completed request method=GET path=/metrics status=404 duration_ms=11.38
+2026-06-30 14:15:34,344 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 14:15:34,357 INFO api.nodes Node creation requested for aws-node
+2026-06-30 14:15:34,358 INFO api.nodes Node registration completed name=aws-node
+2026-06-30 14:15:34,359 INFO api.main Completed request method=POST path=/nodes status=201 duration_ms=15.73
+2026-06-30 14:15:34,363 INFO api.main Incoming request method=GET path=/nodes
+2026-06-30 14:15:34,366 INFO api.nodes Node listing requested
+2026-06-30 14:15:34,367 INFO api.main Completed request method=GET path=/nodes status=200 duration_ms=4.15
+2026-06-30 14:15:34,377 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 14:15:34,391 ERROR api.main Failed request method=POST path=/nodes duration_ms=14.08 error=Object of type ValueError is not JSON serializable
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 739, in app
+    raise validation_error
+fastapi.exceptions.RequestValidationError: 1 validation error:
+  {'type': 'value_error', 'loc': ('body', 'name'), 'msg': 'Value error, node names may only contain letters, numbers, hyphens, or underscores', 'input': 'bad name', 'ctx': {'error': ValueError('node names may only contain letters, numbers, hyphens, or underscores')}}
+
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/nodes.py", line 22, in create_node
+    POST /nodes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 67, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 59, in wrapped_app
+    response = await handler(conn, exc)  # type: ignore[arg-type]
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 55, in validation_error_handler
+    return JSONResponse(status_code=422, content={"error": "Validation failed", "status": 422, "details": exc.errors()})
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 192, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 45, in __init__
+    self.body = self.render(content)
+                ~~~~~~~~~~~^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 195, in render
+    return json.dumps(
+           ~~~~~~~~~~^
+        content,
+        ^^^^^^^^
+    ...<3 lines>...
+        separators=(",", ":"),
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ).encode("utf-8")
+    ^
+  File "/usr/lib64/python3.14/json/__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/usr/lib64/python3.14/json/encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.14/json/encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.14/json/encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type ValueError is not JSON serializable
+when serializing dict item 'error'
+when serializing dict item 'ctx'
+when serializing list item 0
+when serializing dict item 'details'
+2026-06-30 14:15:34,402 ERROR api.main Unhandled exception for POST /nodes
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 739, in app
+    raise validation_error
+fastapi.exceptions.RequestValidationError: 1 validation error:
+  {'type': 'value_error', 'loc': ('body', 'name'), 'msg': 'Value error, node names may only contain letters, numbers, hyphens, or underscores', 'input': 'bad name', 'ctx': {'error': ValueError('node names may only contain letters, numbers, hyphens, or underscores')}}
+
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/nodes.py", line 22, in create_node
+    POST /nodes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 67, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 59, in wrapped_app
+    response = await handler(conn, exc)  # type: ignore[arg-type]
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 55, in validation_error_handler
+    return JSONResponse(status_code=422, content={"error": "Validation failed", "status": 422, "details": exc.errors()})
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 192, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 45, in __init__
+    self.body = self.render(content)
+                ~~~~~~~~~~~^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/responses.py", line 195, in render
+    return json.dumps(
+           ~~~~~~~~~~^
+        content,
+        ^^^^^^^^
+    ...<3 lines>...
+        separators=(",", ":"),
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ).encode("utf-8")
+    ^
+  File "/usr/lib64/python3.14/json/__init__.py", line 242, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/usr/lib64/python3.14/json/encoder.py", line 202, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.14/json/encoder.py", line 263, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.14/json/encoder.py", line 182, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+                    f'is not JSON serializable')
+TypeError: Object of type ValueError is not JSON serializable
+when serializing dict item 'error'
+when serializing dict item 'ctx'
+when serializing list item 0
+when serializing dict item 'details'
+2026-06-30 14:15:35,558 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 14:15:35,564 INFO api.metrics Metrics endpoint requested
+2026-06-30 14:15:35,565 INFO api.main Completed request method=GET path=/metrics status=404 duration_ms=6.53
+2026-06-30 14:15:59,201 INFO api.main Incoming request method=GET path=/health
+2026-06-30 14:15:59,206 INFO api.health Health check requested
+2026-06-30 14:15:59,207 INFO api.main Completed request method=GET path=/health status=200 duration_ms=6.22
+2026-06-30 14:15:59,219 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 14:15:59,226 INFO api.metrics Metrics endpoint requested
+2026-06-30 14:15:59,227 INFO api.main Completed request method=GET path=/metrics status=404 duration_ms=8.59
+2026-06-30 14:15:59,237 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 14:15:59,250 INFO api.nodes Node creation requested for aws-node
+2026-06-30 14:15:59,250 INFO api.nodes Node registration completed name=aws-node
+2026-06-30 14:15:59,251 INFO api.main Completed request method=POST path=/nodes status=201 duration_ms=14.56
+2026-06-30 14:15:59,256 INFO api.main Incoming request method=GET path=/nodes
+2026-06-30 14:15:59,258 INFO api.nodes Node listing requested
+2026-06-30 14:15:59,260 INFO api.main Completed request method=GET path=/nodes status=200 duration_ms=3.94
+2026-06-30 14:15:59,269 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 14:15:59,282 INFO api.main Completed request method=POST path=/nodes status=422 duration_ms=12.96
+2026-06-30 14:15:59,300 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 14:15:59,305 INFO api.metrics Metrics endpoint requested
+2026-06-30 14:15:59,306 INFO api.main Completed request method=GET path=/metrics status=404 duration_ms=6.55
+2026-06-30 14:26:33,602 INFO api.main Incoming request method=GET path=/best-route
+2026-06-30 14:26:33,620 INFO api.routing Best-route endpoint requested
+2026-06-30 14:26:33,621 ERROR api.main Failed request method=GET path=/best-route duration_ms=19.32 error=
+Traceback (most recent call last):
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 70, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/routing.py", line 21, in best_route
+    decision = routing_service.decide_route(metrics)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/services/routing_service.py", line 31, in decide_route
+    return self.engine.select_route(candidates, previous_route=previous_route, previous_score=previous_score)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/router/engine.py", line 41, in select_route
+    backup = self.failover_manager.select_backup(candidates)
+  File "/home/sharan/multicloud/Multicloud-Routing/router/failover.py", line 33, in select_backup
+    raise NoHealthyNodeError()
+router.exceptions.NoHealthyNodeError
+2026-06-30 14:26:33,632 ERROR api.main Unhandled exception for GET /best-route
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 70, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/routing.py", line 21, in best_route
+    decision = routing_service.decide_route(metrics)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/services/routing_service.py", line 31, in decide_route
+    return self.engine.select_route(candidates, previous_route=previous_route, previous_score=previous_score)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/router/engine.py", line 41, in select_route
+    backup = self.failover_manager.select_backup(candidates)
+  File "/home/sharan/multicloud/Multicloud-Routing/router/failover.py", line 33, in select_backup
+    raise NoHealthyNodeError()
+router.exceptions.NoHealthyNodeError
+2026-06-30 14:27:04,216 INFO api.main Incoming request method=GET path=/best-route
+2026-06-30 14:27:04,234 INFO api.routing Best-route endpoint requested
+2026-06-30 14:27:04,235 ERROR api.main Failed request method=GET path=/best-route duration_ms=18.90 error=
+Traceback (most recent call last):
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 70, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/routing.py", line 21, in best_route
+    decision = routing_service.decide_route(metrics)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/services/routing_service.py", line 31, in decide_route
+    return self.engine.select_route(candidates, previous_route=previous_route, previous_score=previous_score)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/router/engine.py", line 49, in select_route
+    raise NoHealthyNodeError()
+router.exceptions.NoHealthyNodeError
+2026-06-30 14:27:04,246 ERROR api.main Unhandled exception for GET /best-route
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 70, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/routing.py", line 21, in best_route
+    decision = routing_service.decide_route(metrics)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/services/routing_service.py", line 31, in decide_route
+    return self.engine.select_route(candidates, previous_route=previous_route, previous_score=previous_score)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/router/engine.py", line 49, in select_route
+    raise NoHealthyNodeError()
+router.exceptions.NoHealthyNodeError
+2026-06-30 14:27:29,766 INFO api.main Incoming request method=GET path=/best-route
+2026-06-30 14:27:29,785 INFO api.routing Best-route endpoint requested
+2026-06-30 14:27:29,786 ERROR api.main Failed request method=GET path=/best-route duration_ms=20.68 error=
+Traceback (most recent call last):
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 70, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/routing.py", line 21, in best_route
+    decision = routing_service.decide_route(metrics)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/services/routing_service.py", line 31, in decide_route
+    return self.engine.select_route(candidates, previous_route=previous_route, previous_score=previous_score)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/router/engine.py", line 49, in select_route
+    raise NoHealthyNodeError()
+router.exceptions.NoHealthyNodeError
+2026-06-30 14:27:29,798 ERROR api.main Unhandled exception for GET /best-route
+Traceback (most recent call last):
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/api/main.py", line 70, in log_requests
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2543, in app
+    await route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1700, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 2598, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1720, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 1239, in handle
+    await app(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 136, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/sharan/.local/lib/python3.14/site-packages/fastapi/routing.py", line 346, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/.local/lib/python3.14/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.14/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/routers/routing.py", line 21, in best_route
+    decision = routing_service.decide_route(metrics)
+  File "/home/sharan/multicloud/Multicloud-Routing/api/services/routing_service.py", line 31, in decide_route
+    return self.engine.select_route(candidates, previous_route=previous_route, previous_score=previous_score)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sharan/multicloud/Multicloud-Routing/router/engine.py", line 49, in select_route
+    raise NoHealthyNodeError()
+router.exceptions.NoHealthyNodeError
+2026-06-30 14:28:43,514 INFO api.main Incoming request method=GET path=/best-route
+2026-06-30 14:28:43,535 INFO api.routing Best-route endpoint requested
+2026-06-30 14:28:43,537 INFO api.routing Route selected node=aws-node score=84.00
+2026-06-30 14:28:43,538 INFO api.main Completed request method=GET path=/best-route status=200 duration_ms=23.65
+2026-06-30 14:28:51,046 INFO api.main Incoming request method=GET path=/health
+2026-06-30 14:28:51,050 INFO api.health Health check requested
+2026-06-30 14:28:51,051 INFO api.main Completed request method=GET path=/health status=200 duration_ms=5.59
+2026-06-30 14:28:51,060 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 14:28:51,066 INFO api.metrics Metrics endpoint requested
+2026-06-30 14:28:51,067 INFO api.main Completed request method=GET path=/metrics status=404 duration_ms=6.99
+2026-06-30 14:28:51,074 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 14:28:51,088 INFO api.nodes Node creation requested for aws-node
+2026-06-30 14:28:51,089 INFO api.nodes Node registration completed name=aws-node
+2026-06-30 14:28:51,090 INFO api.main Completed request method=POST path=/nodes status=201 duration_ms=15.81
+2026-06-30 14:28:51,094 INFO api.main Incoming request method=GET path=/nodes
+2026-06-30 14:28:51,096 INFO api.nodes Node listing requested
+2026-06-30 14:28:51,097 INFO api.main Completed request method=GET path=/nodes status=200 duration_ms=3.48
+2026-06-30 14:28:51,105 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 14:28:51,117 INFO api.main Completed request method=POST path=/nodes status=422 duration_ms=12.36
+2026-06-30 14:28:51,135 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 14:28:51,140 INFO api.metrics Metrics endpoint requested
+2026-06-30 14:28:51,141 INFO api.main Completed request method=GET path=/metrics status=404 duration_ms=6.32
+2026-06-30 14:28:51,171 INFO api.main Incoming request method=GET path=/best-route
+2026-06-30 14:28:51,186 INFO api.routing Best-route endpoint requested
+2026-06-30 14:28:51,187 INFO api.routing Route selected node=aws-node score=84.00
+2026-06-30 14:28:51,188 INFO api.main Completed request method=GET path=/best-route status=200 duration_ms=17.42
+2026-06-30 15:41:22,221 INFO api.main Incoming request method=GET path=/best-route
+2026-06-30 15:41:22,239 INFO api.routing Best-route endpoint requested
+2026-06-30 15:41:22,240 INFO api.routing Route selected node=aws-node score=84.00
+2026-06-30 15:41:22,241 INFO api.main Completed request method=GET path=/best-route status=200 duration_ms=20.31
+2026-06-30 15:41:22,250 INFO api.main Incoming request method=POST path=/execute-route
+2026-06-30 15:41:22,266 INFO api.routing Execute-route endpoint requested
+2026-06-30 15:41:22,268 INFO api.routing Route execution result=executed route=aws-node
+2026-06-30 15:41:22,270 INFO api.main Completed request method=POST path=/execute-route status=200 duration_ms=19.76
+2026-06-30 15:41:35,107 INFO api.main Incoming request method=GET path=/best-route
+2026-06-30 15:41:35,125 INFO api.routing Best-route endpoint requested
+2026-06-30 15:41:35,127 INFO api.routing Route selected node=aws-node score=84.00
+2026-06-30 15:41:35,128 INFO api.main Completed request method=GET path=/best-route status=200 duration_ms=20.28
+2026-06-30 15:41:35,136 INFO api.main Incoming request method=POST path=/execute-route
+2026-06-30 15:41:35,159 INFO api.routing Execute-route endpoint requested
+2026-06-30 15:41:35,161 INFO api.routing Route execution result=executed route=aws-node
+2026-06-30 15:41:35,162 INFO api.main Completed request method=POST path=/execute-route status=200 duration_ms=25.20
+2026-06-30 15:41:43,455 INFO api.main Incoming request method=GET path=/health
+2026-06-30 15:41:43,459 INFO api.health Health check requested
+2026-06-30 15:41:43,460 INFO api.main Completed request method=GET path=/health status=200 duration_ms=5.50
+2026-06-30 15:41:43,469 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 15:41:43,476 INFO api.metrics Metrics endpoint requested
+2026-06-30 15:41:43,477 INFO api.main Completed request method=GET path=/metrics status=404 duration_ms=8.11
+2026-06-30 15:41:43,484 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 15:41:43,496 INFO api.nodes Node creation requested for aws-node
+2026-06-30 15:41:43,496 INFO api.nodes Node registration completed name=aws-node
+2026-06-30 15:41:43,497 INFO api.main Completed request method=POST path=/nodes status=201 duration_ms=13.22
+2026-06-30 15:41:43,501 INFO api.main Incoming request method=GET path=/nodes
+2026-06-30 15:41:43,503 INFO api.nodes Node listing requested
+2026-06-30 15:41:43,505 INFO api.main Completed request method=GET path=/nodes status=200 duration_ms=3.72
+2026-06-30 15:41:43,511 INFO api.main Incoming request method=POST path=/nodes
+2026-06-30 15:41:43,528 INFO api.main Completed request method=POST path=/nodes status=422 duration_ms=17.37
+2026-06-30 15:41:43,543 INFO api.main Incoming request method=GET path=/metrics
+2026-06-30 15:41:43,549 INFO api.metrics Metrics endpoint requested
+2026-06-30 15:41:43,549 INFO api.main Completed request method=GET path=/metrics status=404 duration_ms=6.61
+2026-06-30 15:41:43,569 INFO api.main Incoming request method=GET path=/best-route
+2026-06-30 15:41:43,587 INFO api.routing Best-route endpoint requested
+2026-06-30 15:41:43,589 INFO api.routing Route selected node=aws-node score=84.00
+2026-06-30 15:41:43,590 INFO api.main Completed request method=GET path=/best-route status=200 duration_ms=20.68
+2026-06-30 15:41:43,597 INFO api.main Incoming request method=POST path=/execute-route
+2026-06-30 15:41:43,614 INFO api.routing Execute-route endpoint requested
+2026-06-30 15:41:43,616 INFO api.routing Route execution result=executed route=aws-node
+2026-06-30 15:41:43,617 INFO api.main Completed request method=POST path=/execute-route status=200 duration_ms=19.47
