@@ -1,0 +1,6 @@
+# Copy this file to terraform.tfvars and replace the placeholder values.
+# Use your public IP in CIDR notation for SSH access.
+my_ip_cidr = "203.0.113.10/32"
+
+# Optional: set this if you want to SSH into the instance using an existing key pair.
+# key_name = "my-ec2-key"
